@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
@@ -59,22 +58,23 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 // Set stores the asset (both key and value) on the ledger. If the key exists,
 // it will override the value with the new one
 
-func getTran(stub shim.ChaincodeStubInterface, args []string) (map[string][]byte, error) {
-	if len(args) != 0 {
-		return "", fmt.Errorf("Incorrect arguments. Expecting a key and a value")
-	}
-
-	value, err := stub.GetTransient()
+func (t *SimpleChaincode) getTran(stub shim.ChaincodeStubInterface) pb.Response {
+	fmt.Printf("\nBegin*** getTransient \n")
+	payload, err := stub.GetTransient()
+	fmt.Printf(" payload from chaincode : %v", payload)
 	if err != nil {
-		return "", fmt.Errorf("Failed to get asset: %s with error: %s", args[0], err)
+		return shim.Error(err.Error())
 	}
-	if value == nil {
-		return "", fmt.Errorf("Asset not found: %s", args[0])
+	for key, currArg := range payload {
+		fmt.Printf("Inside ... Loop")
+		fmt.Printf("payload[%d] := %s\n", key, currArg)
 	}
-	jsonString, err := json.Marshal(value)
-	fmt.Println(jsonString)
-
-	return jsonString, nil
+	b, err2 := GetBytes(payload)
+	if err2 != nil {
+		return shim.Error(err2.Error())
+	}
+	fmt.Printf("\nEnd*** getTransient \n")
+	return shim.Success([]byte(b))
 }
 
 func set(stub shim.ChaincodeStubInterface, args []string) (string, error) {
