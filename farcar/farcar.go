@@ -72,7 +72,7 @@ func getTran(stub shim.ChaincodeStubInterface, args []string) (string, error) {
 		return "", fmt.Errorf("Asset not found: %s", args[0])
 	}
 	jsonString, err := json.Marshal(value)
-	fmt.Println(jsonString)
+	fmt.Println("haha")
 
 	return "hihi", nil
 }
