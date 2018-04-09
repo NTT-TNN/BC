@@ -42,8 +42,8 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	var err error
 	if fn == "set" {
 		result, err = set(stub, args)
-	} else if fn == "getTran" {
-		result, err = getTran(stub)
+	} else if fn == "getTransient" {
+		result, err = getTransient(stub)
 	} else { // assume 'get' even if fn is nil
 		result, err = get(stub, args)
 	}
@@ -59,7 +59,7 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 // Set stores the asset (both key and value) on the ledger. If the key exists,
 // it will override the value with the new one
 
-func (t *SimpleAsset) getTran(stub shim.ChaincodeStubInterface) peer.Response {
+func (t *SimpleAsset) getTransient(stub shim.ChaincodeStubInterface) peer.Response {
 	fmt.Printf("\nBegin*** getTransient \n")
 	payload, err := stub.GetTransient()
 	fmt.Printf(" payload from chaincode : %v", payload)
