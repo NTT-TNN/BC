@@ -51,6 +51,7 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 		return shim.Error(err.Error())
 	}
 
+	//gettran
 	// Return the result as success payload
 	return shim.Success([]byte(result))
 }
