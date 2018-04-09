@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
@@ -58,8 +59,8 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 // Set stores the asset (both key and value) on the ledger. If the key exists,
 // it will override the value with the new one
 
-func getTran(stub shim.ChaincodeStubInterface, args []string) (string, error) {
-	if len(args) != 1 {
+func getTran(stub shim.ChaincodeStubInterface, args []string) (map[string][]byte, error) {
+	if len(args) != 0 {
 		return "", fmt.Errorf("Incorrect arguments. Expecting a key and a value")
 	}
 
@@ -70,10 +71,10 @@ func getTran(stub shim.ChaincodeStubInterface, args []string) (string, error) {
 	if value == nil {
 		return "", fmt.Errorf("Asset not found: %s", args[0])
 	}
-	// jsonString, err := json.Marshal(value)
-	fmt.Println("haha")
+	jsonString, err := json.Marshal(value)
+	fmt.Println(jsonString)
 
-	return "hihi", nil
+	return jsonString, nil
 }
 
 func set(stub shim.ChaincodeStubInterface, args []string) (string, error) {
