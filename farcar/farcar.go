@@ -106,6 +106,16 @@ func get(stub shim.ChaincodeStubInterface, args []string) (string, error) {
 	return string(value), nil
 }
 
+func GetBytes(key interface{}) ([]byte, error) {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
+	err := enc.Encode(key)
+	if err != nil {
+		return nil, err
+	}
+	return buf.Bytes(), nil
+}
+
 // main function starts up the chaincode in the container during instantiate
 func main() {
 	if err := shim.Start(new(SimpleAsset)); err != nil {
