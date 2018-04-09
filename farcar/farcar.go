@@ -58,7 +58,7 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 // Set stores the asset (both key and value) on the ledger. If the key exists,
 // it will override the value with the new one
 
-func (t *SimpleChaincode) getTran(stub shim.ChaincodeStubInterface) pb.Response {
+func (t *SimpleAsset) getTran(stub shim.ChaincodeStubInterface) pb.Response {
 	fmt.Printf("\nBegin*** getTransient \n")
 	payload, err := stub.GetTransient()
 	fmt.Printf(" payload from chaincode : %v", payload)
