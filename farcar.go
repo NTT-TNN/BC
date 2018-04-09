@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
@@ -70,7 +71,9 @@ func getTran(stub shim.ChaincodeStubInterface, args []string) (string, error) {
 	if value == nil {
 		return "", fmt.Errorf("Asset not found: %s", args[0])
 	}
-	return string(value), nil
+	jsonString, err := json.Marshal(value)
+
+	return jsonString, nil
 }
 
 func set(stub shim.ChaincodeStubInterface, args []string) (string, error) {
