@@ -43,7 +43,7 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	if fn == "set" {
 		result, err = set(stub, args)
 	} else if fn == "getTran" {
-		result, err = getTran(stub, args)
+		result, err = getTran(stub)
 	} else { // assume 'get' even if fn is nil
 		result, err = get(stub, args)
 	}
