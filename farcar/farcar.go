@@ -60,7 +60,7 @@ func (t *SimpleAsset) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 // it will override the value with the new one
 
 func getTran(stub shim.ChaincodeStubInterface, args []string) (string, error) {
-	if len(args) != 0 {
+	if len(args) != 1 {
 		return "", fmt.Errorf("Incorrect arguments. Expecting a key and a value")
 	}
 
