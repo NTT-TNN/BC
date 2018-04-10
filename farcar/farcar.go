@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bytes"
+	"encoding/gob"
 	"fmt"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
