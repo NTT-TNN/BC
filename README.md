@@ -20,8 +20,8 @@ Cấu trúc của một block:
         - The previous block hash.
         - Mining competition. Mỗi block cần có một vaid hash. Bao gồm: timestamp, noncev và độ khó( với bitcoin)
         - Merkle tree root: Cấu trúc dữ liệu để tổng kết các transaction trong block.
-    - Block identifiers: Mỗi một block sẽ có một mã băm để xác định block đó.
-    - Merkle tree root: Là một cáu trúc dữ liệu có được bằng cách băm một cách đệ quy một cặp các transaction cho đến khi chỉ còn một giá trị băm gọi là merkle root. Giá trị root này sẽ được lưu tại blockchain header. 
+        - Block identifiers: Mỗi một block sẽ có một mã băm để xác định block đó.
+        - Merkle tree root: Là một cáu trúc dữ liệu có được bằng cách băm một cách đệ quy một cặp các transaction cho đến khi chỉ còn một giá trị băm gọi là merkle root. Giá trị root này sẽ được lưu tại blockchain header. 
     - Danh sách các transactions.
 
 [image]

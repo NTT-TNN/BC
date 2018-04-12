@@ -116,20 +116,38 @@ func (s *SmartContract) queryAllUsers(APIstub shim.ChaincodeStubInterface) sc.Re
 	return shim.Success(buffer.Bytes())
 }
 
-func (s *SmartContract) changeCarOwner(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+func (s *SmartContract) In(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
 	if len(args) != 2 {
 		return shim.Error("Incorrect number of arguments. Expecting 2")
 	}
 
-	carAsBytes, _ := APIstub.GetState(args[0])
-	car := Car{}
+	userAsBytes, _ := APIstub.GetState(args[0])
+	user := Person{}
 
 	json.Unmarshal(carAsBytes, &car)
-	car.Owner = args[1]
+	user.TimeIn = args[1]
 
-	carAsBytes, _ = json.Marshal(car)
-	APIstub.PutState(args[0], carAsBytes)
+	userAsBytes, _ = json.Marshal(user)
+	APIstub.PutState(args[0], userAsBytes)
+
+	return shim.Success(nil)
+}
+
+func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 2 {
+		return shim.Error("Incorrect number of arguments. Expecting 2")
+	}
+
+	userAsBytes, _ := APIstub.GetState(args[0])
+	user := Person{}
+
+	json.Unmarshal(carAsBytes, &car)
+	user.TimeOut = args[1]
+	user.Balance=user.Balance+10;
+	userAsBytes, _ = json.Marshal(user)
+	APIstub.PutState(args[0], userAsBytes)
 
 	return shim.Success(nil)
 }
