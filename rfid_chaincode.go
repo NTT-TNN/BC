@@ -69,7 +69,7 @@ func (s *SmartContract) createUser(APIstub shim.ChaincodeStubInterface, args []s
     if err != nil {
         // handle error
         fmt.Println(err)
-        os.Exit(2)
+
     }
 
 	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: balance}
@@ -132,7 +132,7 @@ func (s *SmartContract) In(APIstub shim.ChaincodeStubInterface, args []string) s
 	userAsBytes, _ := APIstub.GetState(args[0])
 	user := Person{}
 
-	json.Unmarshal(carAsBytes, &car)
+	json.Unmarshal(userAsBytes, &user)
 	user.TimeIn = args[1]
 
 	userAsBytes, _ = json.Marshal(user)
@@ -150,7 +150,7 @@ func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) 
 	userAsBytes, _ := APIstub.GetState(args[0])
 	user := Person{}
 
-	json.Unmarshal(carAsBytes, &car)
+	json.Unmarshal(userAsBytes, &user)
 	user.TimeOut = args[1]
 	user.Balance=user.Balance+10;
 	userAsBytes, _ = json.Marshal(user)
