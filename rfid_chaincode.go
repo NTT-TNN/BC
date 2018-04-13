@@ -61,6 +61,24 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 	return shim.Error("Invalid Smart Contract function name.")
 }
 
+func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
+	users := []Person{
+		Person{Name: "Thao", Id: "1", Gender: "male", Balance: "99999999", TimeIn="123",TimeOut="234"},
+
+	}
+
+	i := 0
+	for i < len(users) {
+		fmt.Println("i is ", i)
+		userAsBytes, _ := json.Marshal(users[i])
+		APIstub.PutState("User"+strconv.Itoa(i), userAsBytes)
+		fmt.Println("Added", cars[i])
+		i = i + 1
+	}
+
+	return shim.Success(nil)
+}
+
 func (s *SmartContract) queryUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
 	if len(args) != 1 {
