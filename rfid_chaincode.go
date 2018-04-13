@@ -26,7 +26,7 @@ type Person struct {
 
 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
-	 args := stub.GetStringArgs()
+	 args := APIstub.GetStringArgs()
     if len(args) != 2 {
             return shim.Error("Incorrect arguments. Expecting a key and a value")
     }
@@ -34,7 +34,7 @@ func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
     // Set up any variables or assets here by calling stub.PutState()
 
     // We store the key and the value on the ledger
-    err := stub.PutState(args[0], []byte(args[1]))
+    err := APIstub.PutState(args[0], []byte(args[1]))
     if err != nil {
             return shim.Error(fmt.Sprintf("Failed to create asset: %s", args[0]))
     }
