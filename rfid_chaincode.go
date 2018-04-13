@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/protos/peer"
+	sc "github.com/hyperledger/fabric/protos/peer"
 )
 
 // Define the Smart Contract structure
@@ -65,7 +65,14 @@ func (s *SmartContract) createUser(APIstub shim.ChaincodeStubInterface, args []s
 		return shim.Error("Incorrect number of arguments. Expecting 5")
 	}
 
-	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: args[4]}
+	balance, err := strconv.Atoi(args[4])
+    if err != nil {
+        // handle error
+        fmt.Println(err)
+        os.Exit(2)
+    }
+
+	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: balance}
 
 	userAsBytes, _ := json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
