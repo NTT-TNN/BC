@@ -23,7 +23,7 @@ type Person struct {
 	TimeIn string  `json:"timein"`
 	TimeOut string  `json:"timeout"`
 }
-}
+
 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	return shim.Success(nil)
