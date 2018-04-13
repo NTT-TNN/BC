@@ -19,25 +19,24 @@ type Person struct {
 	Name    string `json:"name"`
 	Id      string `json:"id"`
 	Gender  string `json:"gender"`
-	Balance int `json:"balance"`
-	TimeIn string  `json:"timein"`
-	TimeOut string  `json:"timeout"`
+	Balance int    `json:"balance"`
+	TimeIn  string `json:"timein"`
+	TimeOut string `json:"timeout"`
 }
 
-
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
-	 args := APIstub.GetStringArgs()
-    if len(args) != 2 {
-            return shim.Error("Incorrect arguments. Expecting a key and a value")
-    }
+	args := APIstub.GetStringArgs()
+	if len(args) != 2 {
+		return shim.Error("Incorrect arguments. Expecting a key and a value")
+	}
 
-    // Set up any variables or assets here by calling stub.PutState()
+	// Set up any variables or assets here by calling stub.PutState()
 
-    // We store the key and the value on the ledger
-    err := APIstub.PutState(args[0], []byte(args[1]))
-    if err != nil {
-            return shim.Error(fmt.Sprintf("Failed to create asset: %s", args[0]))
-    }
+	// We store the key and the value on the ledger
+	err := APIstub.PutState(args[0], []byte(args[1]))
+	if err != nil {
+		return shim.Error(fmt.Sprintf("Failed to create asset: %s", args[0]))
+	}
 	return shim.Success(nil)
 }
 
@@ -63,8 +62,7 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 
 func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Response {
 	users := []Person{
-		Person{Name: "Thao", Id: "1", Gender: "male", Balance: "99999999", TimeIn="123",TimeOut="234"},
-
+		Person{Name: "Thao", Id: "1", Gender: "male", Balance: 999, TimeIn: "123", TimeOut: "234"},
 	}
 
 	i := 0
@@ -91,18 +89,18 @@ func (s *SmartContract) queryUser(APIstub shim.ChaincodeStubInterface, args []st
 
 func (s *SmartContract) createUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 5 {
+	if len(args) != 7 {
 		return shim.Error("Incorrect number of arguments. Expecting 5")
 	}
 
 	balance, err := strconv.Atoi(args[4])
-    if err != nil {
-        // handle error
-        fmt.Println(err)
+	if err != nil {
+		// handle error
+		fmt.Println(err)
 
-    }
+	}
 
-	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: balance}
+	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: balance, TimeIn: args[5], TimeOut: args[6]}
 
 	userAsBytes, _ := json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
@@ -182,7 +180,7 @@ func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) 
 
 	json.Unmarshal(userAsBytes, &user)
 	user.TimeOut = args[1]
-	user.Balance=user.Balance+10;
+	user.Balance = user.Balance + 10
 	userAsBytes, _ = json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
 
