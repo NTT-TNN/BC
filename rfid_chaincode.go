@@ -180,8 +180,14 @@ func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) 
 
 	json.Unmarshal(userAsBytes, &user)
 	user.TimeOut = args[1]
-	timeout, err := strconv.Atoi(args[1])
-	timein, err := strconv.Atoi(user.TimeIn)
+	timeout, err1 := strconv.Atoi(args[1])
+	if err1 != nil {
+		return shim.Error(fmt.Sprintf("Failed to create asset: %s", args[0]))
+	}
+	timein, err2 := strconv.Atoi(user.TimeIn)
+	if err2 != nil {
+		return shim.Error(fmt.Sprintf("Failed to create asset: %s", args[0]))
+	}
 	user.Balance = user.Balance + timeout - timein
 	userAsBytes, _ = json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
