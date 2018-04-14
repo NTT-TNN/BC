@@ -180,7 +180,9 @@ func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) 
 
 	json.Unmarshal(userAsBytes, &user)
 	user.TimeOut = args[1]
-	user.Balance = user.Balance + user.TimeOut - user.TimeIn
+	timeout, err := strconv.Atoi(args[1])
+	timein, err := strconv.Atoi(user.TimeIn)
+	user.Balance = user.Balance + timeout - timein
 	userAsBytes, _ = json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
 
