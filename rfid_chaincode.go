@@ -70,7 +70,7 @@ func (s *SmartContract) initLedger(APIstub shim.ChaincodeStubInterface) sc.Respo
 		fmt.Println("i is ", i)
 		userAsBytes, _ := json.Marshal(users[i])
 		APIstub.PutState("User"+strconv.Itoa(i), userAsBytes)
-		fmt.Println("Added", cars[i])
+		fmt.Println("Added", users[i])
 		i = i + 1
 	}
 
@@ -89,18 +89,18 @@ func (s *SmartContract) queryUser(APIstub shim.ChaincodeStubInterface, args []st
 
 func (s *SmartContract) createUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 7 {
-		return shim.Error("Incorrect number of arguments. Expecting 5")
+	if len(args) != 6 {
+		return shim.Error("Incorrect number of arguments. Expecting 6")
 	}
 
-	balance, err := strconv.Atoi(args[4])
+	balance, err := strconv.Atoi(args[3])
 	if err != nil {
 		// handle error
 		fmt.Println(err)
 
 	}
 
-	var user = Person{Name: args[1], Id: args[2], Gender: args[3], Balance: balance, TimeIn: args[5], TimeOut: args[6]}
+	var user = Person{Name: args[0], Id: args[1], Gender: args[2], Balance: balance, TimeIn: args[4], TimeOut: args[5]}
 
 	userAsBytes, _ := json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
@@ -180,7 +180,7 @@ func (s *SmartContract) Out(APIstub shim.ChaincodeStubInterface, args []string) 
 
 	json.Unmarshal(userAsBytes, &user)
 	user.TimeOut = args[1]
-	user.Balance = user.Balance + 10
+	user.Balance = user.Balance + user.TimeOut - user.TimeIn
 	userAsBytes, _ = json.Marshal(user)
 	APIstub.PutState(args[0], userAsBytes)
 
