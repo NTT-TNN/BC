@@ -1,0 +1,119 @@
+Tenant: v1
+OrdererOrgs:
+  - Name: Orderer
+    Domain: orgorderer 
+    Template:
+      Count: 1
+PeerOrgs:
+  - Name: Org1
+    Domain: org1
+    Template:
+      Count: 1
+    Users:
+      Count: 0
+  # - Name: Org2
+  #   Domain: org2
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0
+
+  # - Name: Org3
+  #   Domain: org3
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0   
+
+  # - Name: Org4
+  #   Domain: org4
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0    
+
+  # - Name: Org5
+  #   Domain: org5
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0   
+
+  # - Name: Org6
+  #   Domain: org6
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0 
+
+  # - Name: Org3
+  #   Domain: org3
+  #   Template:
+  #     Count: 1
+  #   Users:
+  #     Count: 0
+
+# Channels:
+#   - Name: MultiOrgsChannel
+#     Domains: 
+#       - org1
+#       - org2
+#       - org3
+
+#   - Name: Org1Org2Channel
+#     Domains: 
+#       - org1
+#       - org2
+      
+# Tenant: v1
+
+# OrdererOrgs:
+#   - Name: Orderer
+#     Domain: orgorderer 
+#     Template:
+#       Count: 1    
+#     MaxMessageCount: 5000
+
+# PeerOrgs:
+#   - Name: IDP1
+#     Domain: idp1
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+      
+#   - Name: IDP2
+#     Domain: idp2
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+
+#   - Name: IDP3
+#     Domain: idp3
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+
+#   - Name: AS1
+#     Domain: as1
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+
+#   - Name: AS2
+#     Domain: as2
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+
+#   - Name: RP1
+#     Domain: rp1
+#     Template:
+#       Count: 1
+#     Users:
+#       Count: 0
+
