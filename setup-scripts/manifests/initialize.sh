@@ -1,5 +1,11 @@
 #!/bin/bash
 
+mkdir -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+cd github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+wget https://raw.githubusercontent.com/hyperledger/fabric-samples/release-1.1/chaincode/chaincode_example02/go/chaincode_example02.go
+cd /opt/gopath/src/github.com/hyperledger/fabric/peer
+
+
 echo
 echo " ============================================== "
 echo " ==========initialize businesschannel========== "
