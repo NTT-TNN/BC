@@ -10,9 +10,9 @@
 #to create your channel, mannually run:
 
 # bash generateArtifacts.sh <CHANNEL_NAME>
-bash driving-files/generateArtifacts.sh
+#bash driving-files/generateArtifacts.sh
 
-bash driving-files/prepare-files.sh
+#bash driving-files/prepare-files.sh
 
 
 echo "Deploying ca"
