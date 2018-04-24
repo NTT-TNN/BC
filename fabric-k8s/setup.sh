@@ -36,7 +36,7 @@ EOF
 
   sudo apt-get update
   sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-else
+
   init kube
   swapoff -a
   kubeadm init --pod-network-cidr 10.244.0.0/16 --apiserver-advertise-address $(ifconfig eth0 | grep 'inet addr'| cut -d':' -f2 | awk '{print $1}')
@@ -69,6 +69,6 @@ else
 
   # check pods
   kubectl get pods --all-namespaces -o wide
-
+else
   kubectl cluster-info
 fi
