@@ -116,6 +116,7 @@ joinChannel () {
 	done
 }
 
+
 installChaincode () {
 	PEER=$1
 	setGlobals $PEER
