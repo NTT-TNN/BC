@@ -8,7 +8,7 @@ cd /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 echo
 echo " ============================================== "
-echo " ==========initialize businesschannel========== "
+echo " ==========initialize mychannel========== "
 echo " ============================================== "
 echo
 
