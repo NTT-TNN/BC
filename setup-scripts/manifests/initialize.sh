@@ -2,7 +2,8 @@
 
 mkdir -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
 cd github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
-wget https://raw.githubusercontent.com/hyperledger/fabric-samples/release-1.1/chaincode/chaincode_example02/go/chaincode_example02.go
+wget https://github.com/NTT-TNN/BC/raw/master/chaincode/chaincode_example02/chaincode_example02
+wget https://raw.githubusercontent.com/NTT-TNN/BC/master/chaincode/chaincode_example02/chaincode_example02.go
 cd /opt/gopath/src/github.com/hyperledger/fabric/peer
 
 
