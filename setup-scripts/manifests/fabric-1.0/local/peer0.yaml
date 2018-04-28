@@ -22,7 +22,7 @@ spec:
       containers:
         - name: peer0-org1-container
           imagePullPolicy: IfNotPresent
-          image: hyperledger/fabric-peer:x86_64-1.0.0
+          image: hyperledger/fabric-peer:x86_64-1.1.0
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           volumeMounts:
             - mountPath: /etc/hyperledger/fabric/msp
