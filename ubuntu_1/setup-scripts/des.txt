@@ -1,0 +1,106 @@
+Name:           hyperledger-fabric-cli-7b48766d56-8w54v
+Namespace:      default
+Node:           thao-ubuntu-3/192.168.160.19
+Start Time:     Sun, 22 Apr 2018 13:36:49 +0000
+Labels:         pod-template-hash=3604322812
+                role=cli
+Annotations:    <none>
+Status:         Running
+IP:             10.244.2.37
+Controlled By:  ReplicaSet/hyperledger-fabric-cli-7b48766d56
+Containers:
+  cli-container:
+    Container ID:  docker://d7f321c1d9e6634428e1e4172daaf00c10cc64bacaca881d5346efe1de93f64c
+    Image:         hyperledger/fabric-tools:x86_64-1.0.0
+    Image ID:      docker-pullable://hyperledger/fabric-tools@sha256:c107430c14344f4f37f0882f3eb8591520abd699a0b9da2b507f7527505612a7
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/bash
+      -c
+      while true; do sleep 20170504; done
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       ContainerCannotRun
+      Message:      invalid header field value "oci runtime error: container_linux.go:247: starting container process caused \"process_linux.go:359: container init caused \\\"rootfs_linux.go:54: mounting \\\\\\\"/data/driving-files/configtx.yaml\\\\\\\" to rootfs \\\\\\\"/var/lib/docker/aufs/mnt/6ae815934ad8afc82687cd9210e2fe365da6856cd596558bdc0cd612162f6c82\\\\\\\" at \\\\\\\"/var/lib/docker/aufs/mnt/6ae815934ad8afc82687cd9210e2fe365da6856cd596558bdc0cd612162f6c82/etc/hyperledger/fabric/configtx.yaml\\\\\\\" caused \\\\\\\"not a directory\\\\\\\"\\\"\"\n": Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+      Exit Code:    127
+      Started:      Sun, 22 Apr 2018 14:08:06 +0000
+      Finished:     Sun, 22 Apr 2018 14:08:06 +0000
+    Ready:          False
+    Restart Count:  11
+    Environment:
+      CORE_VM_ENDPOINT:             unix:///var/run/docker.sock
+      CORE_PEER_ID:                 fabric-cli
+      CORE_LOGGING_LEVEL:           DEBUG
+      CORE_PEER_ADDRESS:            peer0-org1:7051
+      CORE_PEER_LOCALMSPID:         Org1MSP
+      CORE_PEER_TLS_ENABLED:        false
+      CORE_PEER_TLS_CERT_FILE:      /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
+      CORE_PEER_TLS_KEY_FILE:       /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.key
+      CORE_PEER_TLS_ROOTCERT_FILE:  /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+      CORE_PEER_MSPCONFIGPATH:      /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+    Mounts:
+      /etc/hyperledger/fabric/configtx.yaml from configtx (rw)
+      /etc/hyperledger/fabric/crypto-config.yaml from crypto-config (rw)
+      /opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts from channel-artifacts (rw)
+      /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ from crypto (rw)
+      /opt/gopath/src/github.com/hyperledger/fabric/peer/scripts/ from scripts (rw)
+      /var/run/docker.sock from docker-sock (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-7jlbt (ro)
+Conditions:
+  Type           Status
+  Initialized    True 
+  Ready          False 
+  PodScheduled   True 
+Volumes:
+  crypto:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/driving-files/crypto-config
+    HostPathType:  
+  scripts:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/driving-files/scripts
+    HostPathType:  
+  channel-artifacts:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/driving-files/channel-artifacts
+    HostPathType:  
+  configtx:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/driving-files/configtx.yaml
+    HostPathType:  
+  crypto-config:
+    Type:          HostPath (bare host directory volume)
+    Path:          /data/driving-files/crypto-config.yaml
+    HostPathType:  
+  docker-sock:
+    Type:          HostPath (bare host directory volume)
+    Path:          /var/run/docker.sock
+    HostPathType:  
+  default-token-7jlbt:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-7jlbt
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason                 Age                 From                    Message
+  ----     ------                 ----                ----                    -------
+  Normal   Scheduled              32m                 default-scheduler       Successfully assigned hyperledger-fabric-cli-7b48766d56-8w54v to thao-ubuntu-3
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "crypto"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "scripts"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "channel-artifacts"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "configtx"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "crypto-config"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "docker-sock"
+  Normal   SuccessfulMountVolume  32m                 kubelet, thao-ubuntu-3  MountVolume.SetUp succeeded for volume "default-token-7jlbt"
+  Warning  Failed                 31m                 kubelet, thao-ubuntu-3  Error: failed to start container "cli-container": Error response from daemon: invalid header field value "oci runtime error: container_linux.go:247: starting container process caused \"process_linux.go:359: container init caused \\\"rootfs_linux.go:54: mounting \\\\\\\"/data/driving-files/configtx.yaml\\\\\\\" to rootfs \\\\\\\"/var/lib/docker/aufs/mnt/348f113270fc34b63606b6c0297f9c87f11a0aeb25766b97d05893ca540e8e64\\\\\\\" at \\\\\\\"/var/lib/docker/aufs/mnt/348f113270fc34b63606b6c0297f9c87f11a0aeb25766b97d05893ca540e8e64/etc/hyperledger/fabric/configtx.yaml\\\\\\\" caused \\\\\\\"not a directory\\\\\\\"\\\"\"\n": Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+  Warning  Failed                 31m                 kubelet, thao-ubuntu-3  Error: failed to start container "cli-container": Error response from daemon: invalid header field value "oci runtime error: container_linux.go:247: starting container process caused \"process_linux.go:359: container init caused \\\"rootfs_linux.go:54: mounting \\\\\\\"/data/driving-files/configtx.yaml\\\\\\\" to rootfs \\\\\\\"/var/lib/docker/aufs/mnt/d8dd5c873711bda27d73e0bb2e5358f7e4df9b2e1f649bc50be725e1429ac42a\\\\\\\" at \\\\\\\"/var/lib/docker/aufs/mnt/d8dd5c873711bda27d73e0bb2e5358f7e4df9b2e1f649bc50be725e1429ac42a/etc/hyperledger/fabric/configtx.yaml\\\\\\\" caused \\\\\\\"not a directory\\\\\\\"\\\"\"\n": Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+  Warning  Failed                 31m                 kubelet, thao-ubuntu-3  Error: failed to start container "cli-container": Error response from daemon: invalid header field value "oci runtime error: container_linux.go:247: starting container process caused \"process_linux.go:359: container init caused \\\"rootfs_linux.go:54: mounting \\\\\\\"/data/driving-files/configtx.yaml\\\\\\\" to rootfs \\\\\\\"/var/lib/docker/aufs/mnt/7257362a8919236b6ff1e0e4294ab681fb28e802beb336649087d5ce90e04e7e\\\\\\\" at \\\\\\\"/var/lib/docker/aufs/mnt/7257362a8919236b6ff1e0e4294ab681fb28e802beb336649087d5ce90e04e7e/etc/hyperledger/fabric/configtx.yaml\\\\\\\" caused \\\\\\\"not a directory\\\\\\\"\\\"\"\n": Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+  Warning  Failed                 31m                 kubelet, thao-ubuntu-3  Error: failed to start container "cli-container": Error response from daemon: invalid header field value "oci runtime error: container_linux.go:247: starting container process caused \"process_linux.go:359: container init caused \\\"rootfs_linux.go:54: mounting \\\\\\\"/data/driving-files/configtx.yaml\\\\\\\" to rootfs \\\\\\\"/var/lib/docker/aufs/mnt/aa6f078d9a72ce984e49941b2578f8fc7ff35fc9bc3a8a476d5ee9d08b5768ea\\\\\\\" at \\\\\\\"/var/lib/docker/aufs/mnt/aa6f078d9a72ce984e49941b2578f8fc7ff35fc9bc3a8a476d5ee9d08b5768ea/etc/hyperledger/fabric/configtx.yaml\\\\\\\" caused \\\\\\\"not a directory\\\\\\\"\\\"\"\n": Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+  Normal   Created                31m (x4 over 31m)   kubelet, thao-ubuntu-3  Created container
+  Normal   Pulled                 30m (x5 over 31m)   kubelet, thao-ubuntu-3  Container image "hyperledger/fabric-tools:x86_64-1.0.0" already present on machine
+  Warning  BackOff                1m (x132 over 31m)  kubelet, thao-ubuntu-3  Back-off restarting failed container
