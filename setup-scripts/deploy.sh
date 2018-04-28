@@ -16,24 +16,24 @@
 
 
 echo "Deploying ca"
-kubectl create -f local/ca.yaml
+kubectl create -f ./manifests/fabric-1.0/local/ca.yaml
 sleep 5
 
 echo "Deploying orderer"
-kubectl create -f local/orderer.yaml
+kubectl create -f ./manifests/fabric-1.0/local/orderer.yaml
 sleep 5
 
 
 echo "Deploying Peer0"
-kubectl create -f local/peer0.yaml
+kubectl create -f ./manifests/fabric-1.0/local/peer0.yaml
 sleep 5
 
 echo "Deploying rest of the Peers"
-kubectl create -f local/peer1.yaml -f local/peer2.yaml -f local/peer3.yaml
+kubectl create -f ./manifests/fabric-1.0/local/peer1.yaml -f ./manifests/fabric-1.0/local/peer2.yaml -f ./manifests/fabric-1.0/local/peer3.yaml
 
 sleep 5
 
 echo "Deploying Cli"
-kubectl create -f local/cli.yaml
+kubectl create -f ./manifests/fabric-1.0/local/cli.yaml
 
 echo "**********Deployment done successfully**********"
