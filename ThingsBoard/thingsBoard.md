@@ -15,7 +15,6 @@
 
 - Phần customer dùng để nhóm các device thành một tập có thể dụng API để quản lý các device theo customers.
 
-
 - Phần Rules: Dùng để điều khiển action lại thông qua MQTT. Phần rules có các phần sau
     - Filter: Dùng để lọc các điều kiện thoả mãn
         - Ta có thể thêm các filter như Message Type filter(lọc các message theo loạiloại: get hoặc post telemetry,...), Device attribute filter ( để lọc các thuộc tính server attribute như đã nói trên), Device telemetry filter( dùng để lọc dữ liệu theo điều kiênj nào đó ví dụ humi >10),...
