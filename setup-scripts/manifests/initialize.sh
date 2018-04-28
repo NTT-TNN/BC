@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
-cd github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
+mkdir /chaincode_example02
+cd chaincode_example02
 wget https://github.com/NTT-TNN/BC/raw/master/chaincode/chaincode_example02/chaincode_example02
 wget https://raw.githubusercontent.com/NTT-TNN/BC/master/chaincode/chaincode_example02/chaincode_example02.go
 cd /opt/gopath/src/github.com/hyperledger/fabric/peer
@@ -120,7 +120,7 @@ joinChannel () {
 installChaincode () {
 	PEER=$1
 	setGlobals $PEER
-	peer chaincode install -n mycc -v 1.0 -p ./github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02 >&log.txt
+	peer chaincode install -n mycc -v 1.0 -p ./chaincode_example02 >&log.txt
 	res=$?
 	cat log.txt
         verifyResult $res "Chaincode installation on remote peer PEER$PEER has Failed"

@@ -7,7 +7,7 @@
 #
 
 #Exposing the Kube-DNS to NodePort 30053
-kubectl apply -f manifests/Kube-DNS/kube-dns-nodeport.yaml
+# kubectl apply -f manifests/Kube-DNS/kube-dns-nodeport.yaml
 
 #GETTING THE NGINX STREAM PROXY READY TO FORWARD THE INCOMING UDP REQUESTS
 #AT PORT 53 TO Kube-DNS NodePort 30053
