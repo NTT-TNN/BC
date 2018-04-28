@@ -11,10 +11,20 @@ kubectl apply -f manifests/Kube-DNS/kube-dns-nodeport.yaml
 
 #GETTING THE NGINX STREAM PROXY READY TO FORWARD THE INCOMING UDP REQUESTS
 #AT PORT 53 TO Kube-DNS NodePort 30053
+cd driving-files
+
+bash create_prepare_file.sh
+
+rm -rf crypto-config
+
+bash generateArtifacts.sh
+
+bash prepare-files.sh
+
 sudo cp nginx/nginx.conf /etc/nginx/nginx.conf
 
 echo "Kube-DNS  and Nginx Proxy are all set"
 
 echo "Now Deploying the Fabric-1.0 cluster"
 
-bash deploy.sh
+cd ..
