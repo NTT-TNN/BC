@@ -1,8 +1,8 @@
 #!/bin/bash
 
-mkdir /chaincode_example02
+mkdir ./chaincode_example02
 cd chaincode_example02
-wget https://github.com/NTT-TNN/BC/raw/master/chaincode/chaincode_example02/chaincode_example02
+wget https://github.com/NTT-TNN/BC/raw/master/chaincode/chaincode_example02/chaincode_example02/
 wget https://raw.githubusercontent.com/NTT-TNN/BC/master/chaincode/chaincode_example02/chaincode_example02.go
 cd /opt/gopath/src/github.com/hyperledger/fabric/peer
 
